@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      width: 100%;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .card button, .card a button {
+      background-color: #4A90E2;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💪 Exercise Tracker Tool</h1>
+    <p>A structured workout planner to help you stay motivated, consistent, and accountable.</p>
+  </header>
+
+  <div style="text-align: center; margin-top: 1rem;">
+    <button onclick="window.location.href='web.html'" style="background-color: #777; color: white; padding: 0.6rem 1.2rem; font-size: 1rem; border: none; border-radius: 4px; cursor: pointer;">
+      ⬅️ Back to Home
+    </button>
+  </div>
+
+  <section class="card-grid">
+    <div class="card">
+      <h2>📆 Workout Planner</h2>
+      <p>This tracker is currently in development. It’ll help users map out workouts by day, track progress, and stay consistent over time with flexible layout options for strength training, cardio, stretching, and recovery.</p>
+      <p><strong>Features to expect:</strong></p>
+      <ul>
+        <li>Daily and weekly workout logging</li>
+        <li>Progress tracking for strength or endurance goals</li>
+        <li>Pre-written exercise libraries or space to create your own routines</li>
+        <li>Custom split planning (Push/Pull/Legs, Upper/Lower, 5x/week, etc.)</li>
+      </ul>
+      <p>🚧 <em>More to come soon—this is just the warm-up.</em></p>
+      <button onclick="alert('Download feature will be available soon!')">Download Workout Template</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Life Simplified Hub — Progress made trackable.</p>
+  </footer>
+</body>
+</html>
