@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblical Motivation</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+      padding: 2rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+    button {
+      background-color: #4A90E2;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📖 Daily Encouragement</h1>
+    <p>Let Scripture meet you where you are today.</p>
+  </header>
+
+  <div style="text-align: center; margin-top: 1rem;">
+    <button onclick="window.location.href='web.html'" style="background-color: #777;">⬅️ Back to Home</button>
+  </div>
+
+  <section class="card-grid">
+    <div class="card">
+      <h2>What do you need to hear today?</h2>
+      <p>Select how you're feeling, and we’ll give you a passage to lift you up.</p>
+
+      <select id="category-select" disabled>
+        <option value="">Select Category</option>
+        <option value="Hope">Hope</option>
+        <option value="Motivation">Motivation</option>
+        <option value="Anxiety">Anxiety</option>
+        <option value="Gratitude">Gratitude</option>
+        <option value="Identity">Identity</option>
+      </select>
+      <div id="verse-display"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Life Simplified Hub — Encouragement that meets you where you are.</p>
+  </footer>
+
+  <script>
+    let verses = [];
+
+    fetch('verses.json')
+      .then(response => response.json())
+      .then(data => {
+        verses = data;
+        document.getElementById('category-select').disabled = false;
+      });
+
+    document.getElementById('category-select').addEventListener('change', function() {
+      const category = this.value;
+      if (!category) {
+        document.getElementById('verse-display').innerHTML = '';
+        return;
+      }
+      const filtered = verses.filter(v => v.Category === category);
+      if (filtered.length === 0) {
+        document.getElementById('verse-display').innerHTML = 'No verses found.';
+        return;
+      }
+      const randomVerse = filtered[Math.floor(Math.random() * filtered.length)];
+      document.getElementById('verse-display').innerHTML =
+        `<strong>${randomVerse.Reference}</strong><br>${randomVerse.Text.replace(/^"|"$/g, '')}`;
+    });
+  </script>
+</body>
+</html>
